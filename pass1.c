@@ -66,7 +66,7 @@ void main(){
     fclose(fp3);
 
     printf("\n\nThe contents of Input Table :\n\n");
-    fp1=fopen("apl.asm","r");
+    fp1=fopen("alp.asm","r");
     ch=fgetc(fp1);
 
     while(ch!=EOF){
