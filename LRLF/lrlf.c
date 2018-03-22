@@ -1,55 +1,54 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
+#include<stdio.h>
+#include<string.h>
 
-void main() {
-	char a[20],a2[20]="",a3[20]="",a4[20]="",a5[20]="",a6[20]="";
-	int i,j,len_min,len_max;
+int main() {
 
-	printf("Enter Grammer");
-	scanf("%s",a);
+	char a[10],a1[10],a2[10],a3[10],a4[10],a5[10];
+	int i,j=0,k,l;
 
-	i=0;
+	printf("enter any productions A->");
+	gets(a);
 
-	while(a[i]!='/'){
-		a2[i]=a[i];
-		i++;
-	}
+	for(i=0;a[i]!='/';i++,j++)
+		a1[j]=a[i];
 
-	a2[i]='0';
-	i++;
+	a1[j]='\0';
 
-	printf("a=%d\n",strlen(a));
+	for(j=++i,i=0;a[j]!='\0';j++,i++)
+		a2[i]=a[j];
 
-	for(j=0;i!=strlen(a);i++,j++){
-		a3[j]=a[i];
-	}
+	a2[i]='\0';
 
-	len_min=((strlen(a2)<=strlen(a3))?strlen(a2):strlen(a3));
-	len_max=((strlen(a2)>strlen(a3))?strlen(a2):strlen(a3));
+	k=0;
+	l=0;
 
-	for(i=0;i<=len_min;i++){
-		if(a2[i]==a3[i]){
-			a4[i]=a2[i];
-		}else{
-			a4[i]='X'; break;
+	for(i=0;i<strlen(a1)||i<strlen(a2);i++) {
+
+		if(a1[i]==a2[i]) {
+
+			a3[k]=a1[i];
+			k++;
+		}
+
+		else {
+
+			a4[l]=a1[i];
+			a5[l]=a2[i];
+			l++;
 		}
 	}
 
-	j=0;
+	a3[k]='X';
+	a3[++k]='\0';
+	a4[l]='/';
+	a5[l]='\0';
+	a4[++l]='\0';
 
-	if(i!=len_max){
-		if(a2[i]!='0')
-			a5[j]=a2[i];
-		else a5[j]='@';
+	strcat(a4,a5);
 
-		if(a3[i]!='0')
-			a6[j]=a3[i];
-		else a6[j]='@';
-	}
+	printf("\n A->%s",a3);
+	printf("\n X->%s",a4);
+	printf("\n");
 
-	printf("\nA=%s\n",a4);
-	printf("X=%s / %s",a5,a6);
-	getchar();
+	return 0;
 }
