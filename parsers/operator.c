@@ -106,9 +106,7 @@ for(j=i;j<l;j++)
     printf("%c",*(input+j));
 }
 
-
-
-void main()
+int main()
 {
 int j;
 
@@ -118,30 +116,33 @@ scanf("%s",input);
 input=strcat(input,"$");
 l=strlen(input);
 strcpy(stack,"$");
-printf("\nSTACK\t INPUT\t ACTION");
+printf("\nSTACK\t\t INPUT\t\t ACTION");
 while(i<=l)
 	{
 	shift();
 	printf("\n");
 	dispstack();
-	printf("\t");
+	printf("\t\t");
 	dispinput();
-	printf("\t Shift");
+	printf("\t\t Shift");
 	if(prec[getindex(stack[top])][getindex(input[i])]=='>')
 		{
 		while(reduce())
 			{
 			printf("\n");
 			dispstack();
-			printf("\t");
+			printf("\t\t");
 			dispinput();
-			printf("\t Reduced: E->%s",lasthandle);
+			printf("\t\t Reduced: E->%s",lasthandle);
 			}
 		}
 	}
 
 if(strcmp(stack,"$E$")==0)
-    printf("\n Accepted;");
+    printf("\n\nString Accepted");
 else
-    printf("\n Not Accepted;");
+    printf("\n\nString Not Accepted");
+printf("\n");
+
+return 0;
 }
